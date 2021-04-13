@@ -46,7 +46,6 @@ function UserEmail({ onSubmite, ...props }) {
 
     function handlerSubmit(e) {
         e.preventDefault();
-        props.nextStep();
         onSubmite(inputValue);
     };
 

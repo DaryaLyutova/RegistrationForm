@@ -62,7 +62,6 @@ function UserPassword({ onSubmite, ...props }) {
         e.preventDefault();
         if (inputValue.password === inputValue.passwordRepeat) {
             onSubmite(inputValue);
-            props.nextStep();
         } else {
             setInputError({ ...inputError, passwordRepeat: true})
         }

@@ -4,7 +4,7 @@ import cn from 'classnames';
 import Button from '../Button/Button'
 // import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function UserName({ onSubmite, ...props }) {
+function UserName(props) {
 
     // const currentUser = React.useContext(CurrentUserContext);
     //значения инпутов
@@ -61,8 +61,7 @@ function UserName({ onSubmite, ...props }) {
 
     function handlerSubmit(e) {
         e.preventDefault();
-        props.nextStep();
-        onSubmite(inputValue);
+        props.onSubmite(inputValue);
     };
 
     return (

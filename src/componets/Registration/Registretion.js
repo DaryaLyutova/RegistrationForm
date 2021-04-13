@@ -3,57 +3,47 @@ import UserName from '../UserName/UserName';
 import UserEmail from '../UserEmail/UserEmail';
 import UserPassword from '../UserPassword/UserPassword';
 import Success from '../Success/Success';
-const Registration = () => {
+import { observer } from 'mobx-react';
+import user from '../../store/user';
 
-    const [state, setState] = React.useState({
-        step: 1,
-        name: '',
-        birthDate: '',
-        email: '',
-        password: ''
-    })
+const Registration = observer(() => {
+
+    const [step, setStep] = React.useState(1);
 
     const nextStep = () => {
-        setState({
-            step: state.step + 1
-        });
+        setStep(step + 1);
     };
 
-    const handleNameSubmite = (data) => e => {
-        setState({
-            name: data.name,
-            birthDate: data.date
-        });
+    const handleNameSubmite = (data) => {
+        nextStep();
+        user.addUserName(data);
     };
-    const handleEmailSubmite = (data) => e => {
-        setState({
-            email: data.email,
-        });
+    const handleEmailSubmite = (data) => {
+        nextStep();
+        user.addUserEmail(data);
     };
-    const handlePasswordSubmite = (data) => e => {
-        setState({
-            password: data.password, ...state
-        });
+    const handlePasswordSubmite = (data) => {
+        nextStep();
+        user.addUserPassword(data);
     };
-    switch (state.step) {
+
+
+    switch (step) {
         case 1:
             return (
                 <UserName
-                    nextStep={nextStep}
                     onSubmite={handleNameSubmite}
                 />
             );
         case 2:
             return (
                 <UserEmail
-                    nextStep={nextStep}
                     onSubmite={handleEmailSubmite}
                 />
             );
         case 3:
             return (
                 <UserPassword
-                    nextStep={nextStep}
                     onSubmite={handlePasswordSubmite}
                 />
             );
@@ -64,6 +54,6 @@ const Registration = () => {
         default:
             (console.log('Error'))
     }
-};
+});
 
 export default Registration;
