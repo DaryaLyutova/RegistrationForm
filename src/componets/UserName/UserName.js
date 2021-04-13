@@ -50,7 +50,8 @@ function UserName(props) {
     //обработчик инпута имени
     function nameHandler(e) {
         setInputValue({ ...inputValue, name: e.target.value })
-        setInputError({ ...inputError, name: e.target.value.length < 4 })
+        const reg = /^[a-z]+$/i;
+        setInputError({ ...inputError, name: (e.target.value.length < 4 || !reg.test(e.target.value))})
     };
 
     //обработчик инпута date
