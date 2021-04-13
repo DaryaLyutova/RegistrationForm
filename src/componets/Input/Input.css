@@ -33,11 +33,3 @@
 .input__span_visible {
     visibility: visible;
 }
-
-
-
-@media all and (max-width: 425px) {
-    .input__zone {
-        width: 230px;
-    }
-}

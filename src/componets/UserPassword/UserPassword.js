@@ -35,6 +35,7 @@ function UserPassword({ onSubmite, ...props }) {
                 console.log('Не соответствует ни одному из вариантов')
         }
     };
+    
     // проверка валидность всей формы
     React.useEffect(() => {
         if (
